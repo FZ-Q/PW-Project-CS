@@ -21,6 +21,7 @@ return new class extends Migration
       $table->text('image')->nullable();
       $table->enum('status', ['pegawai', 'pelanggan', 'member'])->default('member');
       $table->timestamps();
+      $table->softDeletes($column = 'deleted_at', $precision = 0);
     });
   }
 

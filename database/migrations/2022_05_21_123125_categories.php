@@ -18,6 +18,7 @@ return new class extends Migration
       $table->string('name');
       $table->text('image');
       $table->timestamps();
+      $table->softDeletes($column = 'deleted_at', $precision = 0);
     });
   }
 

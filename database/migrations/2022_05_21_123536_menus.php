@@ -21,6 +21,7 @@ return new class extends Migration
       $table->text('description');
       $table->integer('price');
       $table->timestamps();
+      $table->softDeletes($column = 'deleted_at', $precision = 0);
       $table->foreign('c_id')->references('id')->on('categories')->onDelete('cascade');
     });
   }

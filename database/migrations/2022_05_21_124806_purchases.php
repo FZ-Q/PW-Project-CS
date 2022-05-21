@@ -20,6 +20,7 @@ return new class extends Migration
       $table->integer('qty');
       $table->integer('price');
       $table->timestamps();
+      $table->softDeletes($column = 'deleted_at', $precision = 0);
       $table->foreign('u_id')->references('id')->on('users')->onDelete('cascade');
       $table->foreign('m_id')->references('id')->on('menus')->onDelete('cascade');
     });

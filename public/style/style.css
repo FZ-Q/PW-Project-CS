@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Meow+Script&family=Mohave:wght@400;500;600&family=Noto+Serif+JP:wght@700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+.c-yellow {
+	color: #cf7e00;
+}
+.c-brown {
+	color: #48321d;
+}
+.c-black {
+	color: #1d1b1d;
+}
+
+.c-white {
+	color: #f9f8f6;
+}
+
+body {
+	font-family: "Rubik", sans-serif;
+	background-color: #f9f8f6;
+}
+.navbar {
+	background-color: #48321d99;
+}
+
+.navbar-brand img {
+	height: 40px;
+}
+.carousel-item {
+	height: 800px;
+}
+
+.carousel-item img {
+	height: 800px;
+	object-fit: cover;
+	object-position: center;
+}
+
+@media (max-width: 991.98px) {
+	.carousel-item {
+		height: 300px;
+	}
+
+	.carousel-item img {
+		height: 300px;
+	}
+}
+
+.header-title {
+	margin-top: 4rem;
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+.title-menu {
+	font-size: 70px;
+	font-weight: bold;
+}
+
+.card-img,
+.card-img-top {
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
+}
+
+.card {
+	border-radius: 2rem;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.card img.card-img-top {
+	padding: 50px 50px 25px 50px;
+}
+
+.card-body {
+	margin-bottom: 30px;
+}
+
+img.card-img-category {
+	width: 300px;
+	height: 300px;
+	object-fit: contain;
+	margin: auto;
+}
+
+.card-img-menu {
+	width: 100%;
+	height: 280px;
+	object-fit: contain;
+	margin: auto;
+}
+
+h5.card-title {
+	font-size: 30px;
+}
+
+.background-menu {
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		var(--image-url) center center no-repeat;
+	background-size: cover;
+	min-height: 700px;
+	display: flex;
+	justify-content: center;
+}
+
+.my-btn {
+	border-radius: 2rem;
+	padding: 1rem 2rem;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.my-btn:hover {
+	background-color: #48321d;
+	color: #f9f8f6;
+}
+
+.my-btn-main {
+	border-radius: 2rem;
+	padding: 1rem 2rem;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	background-color: #cf7e00;
+	color: #f9f8f6;
+}
+
+.my-btn-main:hover {
+	color: #f9f8f6;
+	background-color: #48321d;
+}
+
+.transparency {
+	background-color: transparent;
+}
+
+.my-btn-2:hover {
+	text-decoration-color: #cf7e00;
+	color: #cf7e00;
+}
+
+footer li {
+	display: inline;
+}
+
+/* Login */
+.background-login {
+	background-image: url("https://img.freepik.com/free-vector/espresso-coffee-fancy-glass_79603-1039.jpg?t=st=1648470552~exp=1648471152~hmac=30f4d2c…&w=1380");
+	background-size: cover;
+}
+
+.back-shadow {
+	padding: 40px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.img-table {
+	width: 200px;
+	height: 100px;
+	object-fit: contain;
+	object-position: center;
+}
+
+.img-detail {
+	max-width: 300px;
+	object-fit: contain;
+	object-position: center;
+}
+
+.desk {
+	max-width: 280px;
+	max-height: 100px;
+	overflow: auto;
+}
+
+.wrapper {
+	position: relative;
+}
+.wrapper span {
+	position: absolute;
+	top: -2px;
+	right: -20px;
+	background-color: #cf7e00;
+	color: #f9f8f6;
+	width: 25px;
+	text-align: center;
+	border-radius: 50%;
+}
+
+.back-shadow {
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.card-img-detail {
+	width: 100%;
+	height: 450px;
+	object-fit: contain;
+	margin: auto;
+}
+
+.my-input {
+	font-size: 20px;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
