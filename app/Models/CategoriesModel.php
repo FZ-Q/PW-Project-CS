@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CategoriesModel extends Model
 {
-  use SoftDeletes;
+  use SoftDeletes, HasFactory;
 
   protected $guarded = [
     'id'
@@ -16,4 +16,8 @@ class CategoriesModel extends Model
 
   protected $table = 'categories';
   protected $primaryKey = 'id';
+  protected $fillable = [
+    'name',
+    'image'
+  ];
 }
