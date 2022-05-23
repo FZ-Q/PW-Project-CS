@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\MenuController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +20,4 @@ Route::get('/', function () {
   return view('welcome');
 });
 Route::apiResource('kategori', CategoriesController::class);
+Route::apiResource('menu', MenuController::class);
