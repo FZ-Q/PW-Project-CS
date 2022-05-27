@@ -21,7 +21,6 @@
         <ul class="nav flex-column">
           @foreach ($categories as $category)
           <li class="nav-item mb-2"><a href="{{url('menu/'.$category->name)}}" class="nav-link p-0 text-muted">{{$category->name}}</a></li>
-
           @endforeach
         </ul>
       </div>

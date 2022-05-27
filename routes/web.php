@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\HomeController;
 
+// User Models
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UMenuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +22,11 @@ use App\Http\Controllers\HomeController;
 // Route::get('/', function () {
 //   return view('welcome');
 // });
+
+// Admin routes
 Route::apiResource('kategori', CategoriesController::class);
 Route::apiResource('admin-menu', MenuController::class);
 
-
-// User layout
+// User routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('menu/{filter}', [UMenuController::class, 'index']);
