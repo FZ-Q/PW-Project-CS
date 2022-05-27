@@ -1,7 +1,3 @@
-<?php
-include('db.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,14 +6,12 @@ include('db.php');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="{{url('style/style.css')}}">
   <title>Home</title>
 </head>
 
 <body>
-  <?php
-  include 'nav.php';
-  ?>
+  @include('component.navbar')
 
   <main>
     <!-- Hero Carousel -->
@@ -60,25 +54,19 @@ include('db.php');
       <article>
         <div class="container">
           <div class="row justify-content-center">
-            <?php
-            $sqlKategori = "SELECT * FROM kategori";
-            $resultKategori = mysqli_query($conn, $sqlKategori);
+            @foreach ($categories as $category)
 
-            while ($kategori = mysqli_fetch_array($resultKategori)) {
-
-            ?>
-              <div class="col-md-4">
-                <div class="card mt-4 mb-4 m-auto" style="width: 18rem;">
-                  <img src="img/<?php echo $kategori['img']; ?>" class="card-img-top card-img-category" alt="...">
-                  <div class="card-body text-center align-bottom">
-                    <h5 class="card-title fw-bold c-brown"><?php echo $kategori['name']; ?></h5>
-                    <a href="#" class="btn my-btn c-brown mt-3">See More</a>
-                  </div>
+            <div class="col-md-4">
+              <div class="card mt-4 mb-4 m-auto" style="width: 18rem;">
+                <img src="{{url($category->image)}}" class="card-img-top card-img-category" alt="{{$category->name}}">
+                <div class="card-body text-center align-bottom">
+                  <h5 class="card-title fw-bold c-brown">{{$category->name}}</h5>
+                  <a href="#" class="btn my-btn c-brown mt-3">See More</a>
                 </div>
               </div>
-            <?php
-            }
-            ?>
+            </div>
+
+            @endforeach
 
           </div>
         </div>
@@ -98,39 +86,33 @@ include('db.php');
         <article>
           <div class="container">
             <div class="row justify-content-center">
-              <?php
-              $sqlMenu = "SELECT * FROM menu";
-              $resultMenu = mysqli_query($conn, $sqlMenu);
+              @foreach ($menus as $menu)
 
-              while ($menu = mysqli_fetch_array($resultMenu)) {
-              ?>
-                <div class="col-md-6 mt-4 mb-4">
-                  <div class="card w-75 transparency m-auto" style="width: 18rem;">
-                    <img src="img/<?php echo $menu['img']; ?>" class="card-img-menu" alt="...">
-                    <form id="addMenu<?php echo $menu['id']; ?>" action="add_cart.php" method="post">
-                      <input type="hidden" name="id" id="id" value="<?php echo $menu['id']; ?>">
-                      <input type="hidden" name="jumlah" id="jumlah" value='1'>
-                    </form>
-                    <button name="submit" form="addMenu<?php echo $menu['id']; ?>" class="btn my-btn-2 c-white mt-3">
-                      <div class="card-body text-center">
-                        <h5 class="card-title fw-bold"><?php echo $menu['nama']; ?></h5>
-                        Order Now
-                      </div>
-                    </button>
-                  </div>
+              <div class="col-md-6 mt-4 mb-4">
+                <div class="card w-75 transparency m-auto" style="width: 18rem;">
+                  <img src="{{url($menu->image)}}" class="card-img-menu" alt="...">
+                  <!-- Add menu to cart -->
+                  <!-- <form id="addMenu" action="add_cart.php" method="post"> -->
+                  <!-- <input type="hidden" name="id" id="id" value="">
+                    <input type="hidden" name="jumlah" id="jumlah" value='1'>
+                  </form> -->
+                  <button name="submit" form="addMenu" class="btn my-btn-2 c-white mt-3">
+                    <div class="card-body text-center">
+                      <h5 class="card-title fw-bold">{{$menu->name}}</h5>
+                      Order Now
+                    </div>
+                  </button>
                 </div>
-              <?php
-              }
-              ?>
+              </div>
+              @endforeach
+
             </div>
           </div>
         </article>
     </section>
 
   </main>
-  <?php
-  include 'footer.php';
-  ?>
+  @include('component.footer')
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
