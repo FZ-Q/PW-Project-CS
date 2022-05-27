@@ -36,7 +36,7 @@ class MenuController extends Controller
 
     $data->save();
     $request->session()->flash('successMsg', 'Data berhasil disimpan!');
-    return redirect('menu');
+    return redirect('admin-menu');
   }
 
   public function show($id)
@@ -77,7 +77,7 @@ class MenuController extends Controller
 
 
 
-    return redirect('menu');
+    return redirect('admin-menu');
   }
 
   public function destroy(Request $request, $id)
