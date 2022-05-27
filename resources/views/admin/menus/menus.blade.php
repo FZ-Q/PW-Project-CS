@@ -52,7 +52,7 @@
                     <td>{{$c->description}}</td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="{{url('menu/'.$c->id)}}" type="button" class="btn btn-primary">Edit</a>
+                        <a href="{{url('admin-menu/'.$c->id)}}" type="button" class="btn btn-primary">Edit</a>
                         <a href="javascript:void(0);" type="button" class="btn btn-danger deleteRow" data-id="{{$c->id}}">Hapus</a>
                       </div>
                     </td>
@@ -76,7 +76,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="formTambah" action="{{url('menu')}}" method="post" enctype="multipart/form-data">
+          <form id="formTambah" action="{{url('admin-menu')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                   <label for="formFile" class="form-label">Gambar</label>
@@ -126,7 +126,7 @@
       _row.remove();
 
       $.ajax({
-        url: "menu/" + _id,
+        url: "admin-menu/" + _id,
         type: 'DELETE',
         dataType: 'json',
         data: {

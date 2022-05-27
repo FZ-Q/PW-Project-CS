@@ -25,7 +25,7 @@
              <div class="col-md-8 back-shadow">
                <h3>{{$menus->name}}</h3>
                <img class="img-detail" src="{{url($menus->image)}}" alt="">
-               <form class="mt-4" id="formEdit" action="{{url('menu/'.$menus->id)}}" method="post" enctype="multipart/form-data">
+               <form class="mt-4" id="formEdit" action="{{url('admin-menu/'.$menus->id)}}" method="post" enctype="multipart/form-data">
                  @method('PUT')
                  @csrf
                  <div class="mb-3">
