@@ -20,7 +20,7 @@ use App\Http\Controllers\HomeController;
 //   return view('welcome');
 // });
 Route::apiResource('kategori', CategoriesController::class);
-Route::apiResource('menu', MenuController::class);
+Route::apiResource('admin-menu', MenuController::class);
 
 
 // User layout

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Menu;
+use App\Models\MenuModel;
 use App\Models\CategoriesModel;
 
 class MenuController extends Controller
@@ -12,7 +12,7 @@ class MenuController extends Controller
 
   public function index()
   {
-    $menus = Menu::all()->sortByDesc('created_at');
+    $menus = MenuModel::all()->sortByDesc('created_at');
     $kat = CategoriesModel::all()->sortByDesc('created_at');
 
     return view('admin.menus.menus', compact('menus', 'kat'));
@@ -21,7 +21,7 @@ class MenuController extends Controller
 
   public function store(Request $request)
   {
-    $data = new Menu;
+    $data = new MenuModel;
     $data->name = $request->name;
     $data->price = $request->price;
     $data->c_id = $request->c_id;
@@ -41,7 +41,7 @@ class MenuController extends Controller
 
   public function show($id)
   {
-    $menus = Menu::where('id', $id)->first();
+    $menus = MenuModel::where('id', $id)->first();
     $kat = CategoriesModel::all()->sortByDesc('created_at');
 
     return view('admin.menus.menus-show', compact('menus','kat'));
@@ -55,10 +55,10 @@ class MenuController extends Controller
       $image->move(public_path('images'), $imageName);
       $dataImage = 'images/' . $imageName;
 
-      $imageRemove = Menu::find($id);
+      $imageRemove = MenuModel::find($id);
       unlink($imageRemove->image);
 
-      Menu::find($id)->update([
+      MenuModel::find($id)->update([
         'name' => $request->name,
         'image' => $dataImage,
         'price' => $request->price,
@@ -66,7 +66,7 @@ class MenuController extends Controller
         'description' => $request->description
       ]);
     } else {
-      Menu::find($id)->update([
+      MenuModel::find($id)->update([
         'name' => $request->name,
         'price' => $request->price,
         'c_id' => $request->c_id,
@@ -82,6 +82,6 @@ class MenuController extends Controller
 
   public function destroy(Request $request, $id)
   {
-    Menu::find($id)->delete($id);
+    MenuModel::find($id)->delete($id);
   }
 }
