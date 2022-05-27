@@ -19,16 +19,10 @@
       <div class="col-md-4">
         <h5>Kategori</h5>
         <ul class="nav flex-column">
-          <?php
-          $sqlKNav = "SELECT * FROM kategori";
-          $resultKNav = mysqli_query($conn, $sqlKNav);
+          @foreach ($categories as $category)
+          <li class="nav-item mb-2"><a href="{{url('menu/'.$category->name)}}" class="nav-link p-0 text-muted">{{$category->name}}</a></li>
 
-          while ($kNav = mysqli_fetch_array($resultKNav)) {
-          ?>
-            <li class="nav-item mb-2"><a href="menu.php?search=all&kategori=<?php echo $kNav['id']; ?>" class="nav-link p-0 text-muted"><?php echo $kNav['name']; ?></a></li>
-          <?php
-          }
-          ?>
+          @endforeach
         </ul>
       </div>
     </div>

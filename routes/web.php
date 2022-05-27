@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\MenuController;
-
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +16,12 @@ use App\Http\Controllers\MenuController;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+// Route::get('/', function () {
+//   return view('welcome');
+// });
 Route::apiResource('kategori', CategoriesController::class);
 Route::apiResource('menu', MenuController::class);
+
+
+// User layout
+Route::get('/', [HomeController::class, 'index'])->name('home');
