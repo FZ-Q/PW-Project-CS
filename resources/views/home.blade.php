@@ -61,7 +61,7 @@
                 <img src="{{url($category->image)}}" class="card-img-top card-img-category" alt="{{$category->name}}">
                 <div class="card-body text-center align-bottom">
                   <h5 class="card-title fw-bold c-brown">{{$category->name}}</h5>
-                  <a href="#" class="btn my-btn c-brown mt-3">See More</a>
+                  <a href="{{url('menu/'.$category->name)}}" class="btn my-btn c-brown mt-3">See More</a>
                 </div>
               </div>
             </div>
