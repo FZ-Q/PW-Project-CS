@@ -30,3 +30,4 @@ Route::apiResource('admin-menu', MenuController::class);
 // User routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('menu/{filter}', [UMenuController::class, 'index']);
+Route::get('menu-detail/{id}', [UMenuController::class, 'detail']);

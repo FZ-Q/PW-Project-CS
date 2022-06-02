@@ -40,7 +40,7 @@
                         <h5 class="card-title fw-bold c-brown">{{$menu->name}}</h5>
                       </div>
                       <div class="col-md-6">
-                        <a href="{{url('detail'.$menu->id)}}" class="btn my-btn c-brown mt-3">See More</a>
+                        <a href="{{url('menu-detail/'.$menu->idHash)}}" class="btn my-btn c-brown mt-3">See More</a>
                       </div>
                       <div class="col-md-6">
                         <form action="add_cart.php" method="post">
