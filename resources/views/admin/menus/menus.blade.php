@@ -18,8 +18,15 @@
   <main>
     <section class="mt-5">
       <div class="container">
-        <h1>Menu</h1>
+        <h1 class="mb-3">Menu</h1>
+        <form action="/admin-menu" method="get">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Cari menu..." name="search">
+            <button class="btn btn-danger" type="submit">Cari</button>
+          </div>
+        </form>
       </div>
+
       <article>
         <div class="container">
           <div class="row">

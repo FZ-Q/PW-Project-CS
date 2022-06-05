@@ -12,8 +12,15 @@ class MenuController extends Controller
 
   public function index()
   {
-    $menus = MenuModel::all()->sortByDesc('created_at');
     $kat = CategoriesModel::all()->sortByDesc('created_at');
+
+    if(request('search')){
+      $menus = MenuModel::where('name','like','%'.request('search').'%')->get();
+
+    }else{
+      $menus = MenuModel::all()->sortByDesc('created_at');
+    }
+
 
     return view('admin.menus.menus', compact('menus', 'kat'));
   }
