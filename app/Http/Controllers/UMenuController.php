@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MenuModel;
-
+use Illuminate\Support\Facades\Crypt;
 use App\Http\Controllers\HomeController;
 
 class UMenuController extends Controller
@@ -20,6 +20,21 @@ class UMenuController extends Controller
 
     $categories = $home->nav();
 
+    foreach ($menus as $m) {
+      $m->idHash = Crypt::encrypt($m->id);
+    }
+
     return view('menu', compact('menus', 'categories', 'filter'));
+  }
+
+  public function detail($id)
+  {
+    $id = Crypt::decrypt($id);
+    $menus = MenuModel::find($id)->load('c');
+    $home = new HomeController();
+
+    $categories = $home->nav();
+
+    return view('menu_detail', compact('menus', 'categories'));
   }
 }
