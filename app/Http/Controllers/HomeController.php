@@ -11,7 +11,7 @@ class HomeController extends Controller
   public function index()
   {
     $menus = MenuModel::all();
-    $categories = CategoriesModel::all();
+    $categories = $this->nav();
 
     return view('home', compact('menus', 'categories'));
   }

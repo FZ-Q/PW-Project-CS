@@ -32,7 +32,7 @@
         </li>
       </ul>
       <div class="d-flex">
-        @if(session('status') == 'pegawai')
+        @if(session('status') != null)
         <!-- Url update profile -->
         <a class="btn btn-danger" href="{{url('logout')}}">Logout</a>
         @else
