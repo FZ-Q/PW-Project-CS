@@ -24,7 +24,7 @@
         </li>
         <li class="nav-item">
           <div class="wrapper">
-            <a class="nav-link" href="cart.php">Cart</a>
+            <a class="nav-link" href="{{url('cart')}}">Cart</a>
             <span class="text-center">
               0
             </span>
@@ -34,6 +34,7 @@
       <div class="d-flex">
         @if(session('status') != null)
         <!-- Url update profile -->
+        <a class="btn btn-warning" href="{{url('proflie')}}">{{Session::get('name')}}</a>
         <a class="btn btn-danger" href="{{url('logout')}}">Logout</a>
         @else
         <a class="btn btn-warning" href="{{url('login')}}">Login</a>
