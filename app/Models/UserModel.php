@@ -22,6 +22,12 @@ class UserModel extends Authenticatable
     'password'
   ];
 
+  protected $fillable = [
+    'name',
+    'email',
+    'image'
+  ];
+
   public function getAuthPassword()
   {
     return $this->password;
