@@ -44,8 +44,9 @@
                 </table>
               </div>
               <div class="col-md-2 text-center">
-                <form action="add_cart.php" method="post">
-                  <input type="hidden" name="id" id="id" value="id">
+                <form action="{{url('cart/add')}}" method="post">
+                  @csrf
+                  <input type="hidden" name="id" id="id" value="{{$menus->id}}">
                   <div class="btn-group" role="group">
                     <div class="btn btn-danger" id="minus">-</div>
                     <input class="form-control text-center" type="number" name="jumlah" id="jumlah" value='1'>

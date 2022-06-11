@@ -9,6 +9,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UMenuController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,3 +40,7 @@ Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('menu/{filter}', [UMenuController::class, 'index']);
 Route::get('menu-detail/{id}', [UMenuController::class, 'detail']);
+
+Route::get('cart', [CartController::class, 'index'])->name('cart');
+Route::post('cart/add', [CartController::class, 'addToCart']);
+Route::get('cart/remove/{id}', [CartController::class, 'removeFormCart']);
