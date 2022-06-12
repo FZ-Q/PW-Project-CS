@@ -46,7 +46,7 @@
                     <td>{{$c->name}}</td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="{{url('kategori/'.$c->id)}}" type="button" class="btn btn-primary">Edit</a>
+                        <a href="{{url('admin-categories/'.$c->id)}}" type="button" class="btn btn-primary">Edit</a>
                         <a href="javascript:void(0);" onclick="return confirm('Are you sure you want to delete this category?');" type="button" class="btn btn-danger deleteRow" data-id="{{$c->id}}">Hapus</a>
                       </div>
                     </td>
@@ -74,7 +74,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="formTambah" action="{{url('kategori')}}" method="post" enctype="multipart/form-data">
+          <form id="formTambah" action="{{url('admin-categories')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
               <label for="nameAdd" class="form-label">Nama</label>
@@ -107,7 +107,7 @@
       _row.remove();
 
       $.ajax({
-        url: "kategori/" + _id,
+        url: "admin-categories/" + _id,
         type: 'DELETE',
         dataType: 'json',
         data: {
@@ -124,16 +124,6 @@
       });
     });
   })(jQuery);
-
-  var status = "<?php if (isset($_GET['status'])) {
-                  echo $_GET['status'];
-                }; ?>"
-
-  if (status == "success") {
-    alert("Data berhasil ditambahkan");
-  } else if (status == "failed") {
-    alert("Data gagal ditambahkan");
-  }
 </script>
 
 </html>
