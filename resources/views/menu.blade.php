@@ -43,7 +43,8 @@
                         <a href="{{url('menu-detail/'.$menu->idHash)}}" class="btn my-btn c-brown mt-3">See More</a>
                       </div>
                       <div class="col-md-6">
-                        <form action="add_cart.php" method="post">
+                        <form action="{{url('cart/add')}}" method="post">
+                          @csrf
                           <input type="hidden" name="id" id="id" value="{{$menu->id}}">
                           <input type="hidden" name="jumlah" id="jumlah" value='1'>
                           <button type="submit" class="btn my-btn-main mt-3">Order Now</button>

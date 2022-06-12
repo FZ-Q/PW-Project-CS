@@ -10,6 +10,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UMenuController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PurchaseController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +33,7 @@ Route::group(
     'middleware' => ['auth', 'admin'],
   ],
   function () {
+    Route::apiResource('admin-purchase', PurchaseController::class);
     Route::apiResource('admin-menu', MenuController::class);
     Route::apiResource('admin-user', UsersController::class);
     Route::apiResource('admin-categories', CategoriesController::class);
@@ -47,3 +50,4 @@ Route::get('menu-detail/{id}', [UMenuController::class, 'detail']);
 Route::get('cart', [CartController::class, 'index'])->name('cart');
 Route::post('cart/add', [CartController::class, 'addToCart']);
 Route::get('cart/remove/{id}', [CartController::class, 'removeFormCart']);
+Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');

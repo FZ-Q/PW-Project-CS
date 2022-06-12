@@ -11,7 +11,7 @@ class CategoriesController extends Controller
 
   public function index()
   {
-    $categories = CategoriesModel::orderBy('created_at', 'desc')->paginate(2);
+    $categories = CategoriesModel::orderBy('created_at', 'desc')->paginate(5);
 
     return view('admin.categories.categories', compact('categories'));
   }
