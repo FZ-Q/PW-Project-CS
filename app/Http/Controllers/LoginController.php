@@ -84,6 +84,8 @@ class LoginController extends Controller
 
       $request->session()->put('name', Auth::user()->name);
     };
+
+
     return redirect()->route('home');
   }
 
