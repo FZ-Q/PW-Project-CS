@@ -84,22 +84,30 @@
           <form id="formTambah" action="{{url('admin-user')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                  <label for="formFile" class="form-label">Gambar</label>
-                  <input class="form-control" type="file" id="formFile" name="image" required>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Nama</label>
-                  <input type="text" class="form-control" name="name" required>
-                </div>
-                
-                <div class="mb-3">
-                  <label class="form-label">Email</label>
-                  <input type="text" class="form-control" name="email" required>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Password</label>
-                  <input type="password" class="form-control" name="password" required>
-                </div>
+              <label for="formFile" class="form-label">Gambar</label>
+              <input class="form-control" type="file" id="formFile" name="image" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nama</label>
+              <input type="text" class="form-control" name="name" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="text" class="form-control" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Status</label>
+              <select class="form-select">
+                <option value="pegawai">Pegawai</option>
+                <option value="pelanggan">pelanggan</option>
+                <option value="member">member</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" name="password" required>
+            </div>
           </form>
         </div>
         <div class="modal-footer">

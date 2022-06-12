@@ -24,6 +24,7 @@ class UsersController extends Controller
     $data = new UserModel;
     $data->name = $request->name;
     $data->email = $request->email;
+    $data->status = $request->status;
     $data->password = Hash::make($request->password);
 
     if ($request->hasFile('image')) {
@@ -61,12 +62,14 @@ class UsersController extends Controller
           'name' => $request->name,
           'image' => $dataImage,
           'email' => $request->email,
+          'status' => $request->status,
           'password' => Hash::make($request->password)
         ]);
       } else {
         UserModel::find($id)->update([
           'name' => $request->name,
           'image' => $dataImage,
+          'status' => $request->status,
           'email' => $request->email,
         ]);
       }
@@ -75,11 +78,13 @@ class UsersController extends Controller
         UserModel::find($id)->update([
           'name' => $request->name,
           'email' => $request->email,
+          'status' => $request->status,
           'password' => Hash::make($request->password)
         ]);
       } else {
         UserModel::find($id)->update([
           'name' => $request->name,
+          'status' => $request->status,
           'email' => $request->email,
         ]);
       }

@@ -44,7 +44,6 @@
                     <option value="member" @if ($user->status == 'member') selected @endif>member</option>
                   </select>
                 </div>
-
                 <div class="mb-3">
                   <label class="form-label">Email</label>
                   <input type="text" class="form-control" name="email" value="{{$user->email}}">
