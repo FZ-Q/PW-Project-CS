@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Crypt;
 
 
 class LoginController extends Controller
@@ -27,6 +28,8 @@ class LoginController extends Controller
     Auth::attempt($request->only('email', 'password'));
 
     if (Auth::check()) {
+      $request->session()->put('idHash', Crypt::encrypt(Auth::user()->id));
+
       $request->session()->put('status', Auth::user()->status);
 
       $request->session()->put('email', Auth::user()->email);
@@ -34,7 +37,7 @@ class LoginController extends Controller
       $request->session()->put('name', Auth::user()->name);
 
       if (Auth::user()->status == 'pegawai') {
-        return redirect('admin-menu');
+        return redirect('admin-purchase');
       } else {
         return redirect()->route('home');
       }

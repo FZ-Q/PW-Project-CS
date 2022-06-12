@@ -12,19 +12,32 @@
 </head>
 
 <body>
+  @if (Session::get('status') == 'pegawai')
   @include('admin.navbar')
+  @else
+  @include('component.navbar')
+  @endif
 
   <main>
     <section class="mt-5 mb-5">
-      <div class="container">
-        <h1>Edit User</h1>
+      <div class="container pt-5">
+        <h1>Profile</h1>
       </div>
       <article>
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-md-8 back-shadow">
+            <div class="col-md-7 back-shadow">
               <h3>{{$user->name}}</h3>
-              <img class="img-detail" src="{{url($user->image)}}" alt="">
+              <h5>{{$user->status}}</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <img class="img-detail" src="{{url($user->image)}}" alt="">
+                </div>
+                <div class="col-md-6">
+                  <h5>Pengajuan Member</h5>
+                  <button class="btn btn-success">Register</button>
+                </div>
+              </div>
               <form class="mt-4" id="formEdit" action="{{url('admin-user/'.$user->id)}}" method="post" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
@@ -36,15 +49,6 @@
                   <label class="form-label">Nama</label>
                   <input type="text" class="form-control" name="name" value="{{$user->name}}">
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Status</label>
-                  <select class="form-select">
-                    <option value="pegawai" @if ($user->status == 'pegawai') selected @endif>Pegawai</option>
-                    <option value="pelanggan" @if ($user->status == 'pelanggan') selected @endif>pelanggan</option>
-                    <option value="member" @if ($user->status == 'member') selected @endif>member</option>
-                  </select>
-                </div>
-
                 <div class="mb-3">
                   <label class="form-label">Email</label>
                   <input type="text" class="form-control" name="email" value="{{$user->email}}">
@@ -59,13 +63,34 @@
                 <button name="submit" form="formEdit" class="btn btn-primary">Update</button>
               </div>
             </div>
+            <div class="col-md-4 offset-md-1 back-shadow">
+              <h3>Riwayat Pembelian</h3>
+              <div style="overflow-y: scroll; max-height: 500px">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    @foreach ($purchases as $purchase)
+                    <div class="col-md-12 mb-3">
+                      <div class="card p-2">
+                        <div class="card-body mb-0">
+                          <p class="card-text">{{date_format($purchase->created_at,"d-m-Y")}}</p>
+                          <h6 class="card-title">{{$purchase->menu->name}}</h6>
+                          <p class="card-text">{{$purchase->qty}}</p>
+                          <p class="card-text">Rp{{number_format($purchase->price)}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
     </section>
   </main>
 </body>
-
+@include('component.footer')
 <script>
   var changePass = document.getElementById('changePassword');
 
@@ -85,9 +110,13 @@
 
   function addCode() {
     var $html = `<div class="mb-3 password">
-      <label for="iPass" class="form-label">Password</label>
-      <input type="password" class="form-control" placeholder="Password" name="password" id="iPass">
-      </div>`;
+  <label for="iPass" class="form-label">Password</label>
+  <input type="password" class="form-control" placeholder="Password" name="password" id="iPass">
+</div>
+<div class="mb-3 password">
+  <label for="iCPass" class="form-label">Konfirmasi Password</label>
+  <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword" id="iCPass">
+</div>`;
     document.getElementById("formEdit").insertAdjacentHTML("beforeend", $html);
   }
 </script>

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-4">
         <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-          <img src="img/coffee-beans-icon.png" alt="">
+          <img src="{{url('images/coffee-beans-icon.png')}}" alt="">
         </a>
         <p class="text-muted">© F.A 2021</p>
       </div>

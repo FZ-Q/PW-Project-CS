@@ -109,8 +109,9 @@ class CartController extends Controller
       }
     }
 
+    session()->forget('cart');
 
-    // session()->forget('cart');
+    return redirect('menu/all');
   }
 
   public function hitungDiskon($harga, $jumlah)

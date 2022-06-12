@@ -8,21 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MenuModel extends Model
 {
-    use SoftDeletes,HasFactory;
+  use SoftDeletes, HasFactory;
 
-    protected $guarded = ['id'];
-    
-    protected $table = 'menus';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'name',
-        'image',
-        'price',
-        'description',
-        'c_id'
-      ];
-    
-    public function c(){
-      return $this->belongsTo(CategoriesModel::class);
-    }
+  protected $guarded = ['id'];
+
+  protected $table = 'menus';
+  protected $primaryKey = 'id';
+
+  public function c()
+  {
+    return $this->belongsTo(CategoriesModel::class);
+  }
 }

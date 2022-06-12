@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="img/coffee-beans-icon.png" alt=""></a>
+    <a class="navbar-brand" href="#"><img src="{{url('images/coffee-beans-icon.png')}}" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,7 +34,7 @@
       <div class="d-flex">
         @if(session('status') != null)
         <!-- Url update profile -->
-        <a class="btn btn-warning" href="{{url('proflie')}}">{{Session::get('name')}}</a>
+        <a class="btn btn-warning" style="margin-right: 10px;" href="{{url('profile')}}">{{Session::get('name')}}</a>
         <a class="btn btn-danger" href="{{url('logout')}}">Logout</a>
         @else
         <a class="btn btn-warning" href="{{url('login')}}">Login</a>

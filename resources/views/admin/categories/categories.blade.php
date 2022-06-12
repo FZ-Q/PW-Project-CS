@@ -47,7 +47,7 @@
                     <td>
                       <div class="btn-group" role="group" aria-label="Basic example">
                         <a href="{{url('kategori/'.$c->id)}}" type="button" class="btn btn-primary">Edit</a>
-                        <a href="javascript:void(0);" type="button" class="btn btn-danger deleteRow" data-id="{{$c->id}}">Hapus</a>
+                        <a href="javascript:void(0);" onclick="return confirm('Are you sure you want to delete this category?');" type="button" class="btn btn-danger deleteRow" data-id="{{$c->id}}">Hapus</a>
                       </div>
                     </td>
                   </tr>
@@ -105,12 +105,6 @@
       var _id = $(this).attr('data-id');
       var _row = $(this).parent().parent().parent();
       _row.remove();
-
-      // $.ajaxSetup({
-      //   headers: {
-      //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      //   }
-      // });
 
       $.ajax({
         url: "kategori/" + _id,

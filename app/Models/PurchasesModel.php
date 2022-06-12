@@ -19,13 +19,6 @@ class PurchasesModel extends Model
   protected $table = 'purchases';
   protected $primaryKey = 'id';
 
-  protected $fillable = [
-    'u_id',
-    'm_id',
-    'qty',
-    'price'
-  ];
-
   public function user()
   {
     return $this->belongsTo(UserModel::class, 'u_id')->withTrashed();
