@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
 
   public function index()
   {
-    
+
     $users = UserModel::orderBy('created_at', 'desc')->paginate(2);
 
     return view('admin.users.users', compact('users'));
@@ -23,7 +24,7 @@ class UsersController extends Controller
     $data = new UserModel;
     $data->name = $request->name;
     $data->email = $request->email;
-    $data->password =$request->password;
+    $data->password = Hash::make($request->password);
 
     if ($request->hasFile('image')) {
       $image = $request->file('image');
@@ -55,18 +56,33 @@ class UsersController extends Controller
       $imageRemove = UserModel::find($id);
       unlink($imageRemove->image);
 
-      UserModel::find($id)->update([
-        'name' => $request->name,
-        'image' => $dataImage,
-        'email' => $request->email,
-        'password' => $request->password
-      ]);
+      if ($request->password != null) {
+        UserModel::find($id)->update([
+          'name' => $request->name,
+          'image' => $dataImage,
+          'email' => $request->email,
+          'password' => Hash::make($request->password)
+        ]);
+      } else {
+        UserModel::find($id)->update([
+          'name' => $request->name,
+          'image' => $dataImage,
+          'email' => $request->email,
+        ]);
+      }
     } else {
-      UserModel::find($id)->update([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => $request->password
-      ]);
+      if ($request->password != null) {
+        UserModel::find($id)->update([
+          'name' => $request->name,
+          'email' => $request->email,
+          'password' => Hash::make($request->password)
+        ]);
+      } else {
+        UserModel::find($id)->update([
+          'name' => $request->name,
+          'email' => $request->email,
+        ]);
+      }
     }
 
     return redirect('admin-user');
