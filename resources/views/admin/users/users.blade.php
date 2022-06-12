@@ -98,7 +98,7 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Status</label>
-              <select class="form-select">
+              <select class="form-select" name="status">
                 <option value="pegawai">Pegawai</option>
                 <option value="pelanggan">pelanggan</option>
                 <option value="member">member</option>
