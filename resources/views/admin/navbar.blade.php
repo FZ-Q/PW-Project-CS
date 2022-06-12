@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{url('admin-menu')}}">Home</a>
+          <a class="nav-link active" aria-current="page" href="{{url('admin-purchase')}}">Pembelian</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{{url('admin-menu')}}">Menu</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="{{url('admin-categories')}}">Kategori</a>
+          <a class="nav-link" aria-current="page" href="{{url('admin-categories')}}">Kategori</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{{url('admin-user')}}">User</a>

@@ -38,7 +38,7 @@
                       <th scope="col">Aksi</th>
                     </tr>
                   </thead>
-                  @if (empty(session::get('cart_item')))
+                  @if (session::get('cart') != null)
                   <tbody>
                     @foreach($item_carts as $item)
                     <tr>
@@ -68,7 +68,7 @@
                   <tbody>
                     <tr>
                       <td colspan="7">
-                        <a href="menu.php?search=all&kategori=all" class="btn my-btn-main mt-3">Order Now</a>
+                        <a href="{{url('/menu/all')}}" class="btn my-btn-main mt-3">Order Now</a>
                       </td>
                     </tr>
                   </tbody>
@@ -91,7 +91,7 @@
                     </table>
                   </div>
                   <div class="col-md-2">
-                    <a href="checkout.php" class="btn btn-primary">Checkout</a>
+                    <a href="{{route('checkout')}}" class="btn btn-primary">Checkout</a>
                   </div>
                 </div>
               </div>

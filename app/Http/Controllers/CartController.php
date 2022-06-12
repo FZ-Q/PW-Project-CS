@@ -4,19 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController;
-use App\Models\MenuModel;
 use Illuminate\Support\Facades\Auth;
+use App\Models\MenuModel;
+use App\Models\PurchasesModel;
 
 class CartController extends Controller
 {
   public function index(Request $request)
   {
     $home = new HomeController();
-    $hitungDiskon = new CartController();
 
     $categories = $home->nav();
 
-    $menus = MenuModel::all()->load('c');
+    $menus = MenuModel::all();
 
     if (!empty($request->session()->get('cart'))) {
       foreach ($menus as $m) {
@@ -24,24 +24,22 @@ class CartController extends Controller
           if ($m->id == $key) {
             $item_carts[$key] = MenuModel::where('id', $key)->first()->toArray();
             $item_carts[$key]['jumlah_pembelian'] = $value['jumlah'];
-            $diskon = $hitungDiskon->hitungDiskon($item_carts[$key]['price'], $value['jumlah']);
+            $diskon = $this->hitungDiskon($item_carts[$key]['price'], $value['jumlah']);
             $item_carts[$key]['diskon'] = $diskon;
-            $item_carts[$key]['harga_total_item'] = $item_carts[$key]['price'] -  $diskon;
+            $item_carts[$key]['harga_total_item'] = ($item_carts[$key]['price'] * $value['jumlah']) -  $diskon;
           }
         }
       }
       return view('cart', compact('categories', 'item_carts'));
     } else {
-      return view('cart', compact('categories'));
+      $item_carts = null;
+      return view('cart', compact('categories', 'item_carts'));
     }
   }
 
   public function addToCart(Request $request)
   {
     $cart = session()->get('cart');
-
-    // $request->session()->forget('cart');
-
 
     if (Auth::check()) {
       if (!$cart) {
@@ -96,7 +94,23 @@ class CartController extends Controller
 
   public function checkout(Request $request)
   {
-    $home = new HomeController();
+    $menus = MenuModel::all();
+
+    foreach ($menus as $m) {
+      foreach ($request->session()->get('cart') as $key => $value) {
+        if ($m->id == $key) {
+          PurchasesModel::create([
+            'u_id' => Auth::user()->id,
+            'm_id' => 1,
+            'qty' => $value['jumlah'],
+            'price' => $m->price * $value['jumlah'] - $this->hitungDiskon($m->price, $value['jumlah']),
+          ]);
+        }
+      }
+    }
+
+
+    // session()->forget('cart');
   }
 
   public function hitungDiskon($harga, $jumlah)
