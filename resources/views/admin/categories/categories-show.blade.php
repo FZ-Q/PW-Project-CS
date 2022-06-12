@@ -25,7 +25,7 @@
             <div class="col-md-8 back-shadow">
               <h3>{{$category->name}}</h3>
               <img class="img-detail" src="{{url($category->image)}}" alt="">
-              <form class="mt-4" id="formEdit" action="{{url('kategori/'.$category->id)}}" method="post" enctype="multipart/form-data">
+              <form class="mt-4" id="formEdit" action="{{url('admin-categories/'.$category->id)}}" method="post" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="mb-3">

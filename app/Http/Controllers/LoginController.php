@@ -49,7 +49,7 @@ class LoginController extends Controller
         ->withErrors(["Email atau password salah!"]);
     }
   }
-  public function formRegister ()
+  public function formRegister()
   {
     $home = new HomeController();
 
@@ -57,7 +57,8 @@ class LoginController extends Controller
 
     return view('register', compact('categories'));
   }
-  public function register(request $request){
+  public function register(request $request)
+  {
     $data = new UserModel;
     $data->name = $request->name;
     $data->email = $request->email;
@@ -71,6 +72,20 @@ class LoginController extends Controller
     }
 
     $data->save();
+
+    Auth::attempt($request->only('email', 'password'));
+
+    if (Auth::check()) {
+      $request->session()->put('idHash', Crypt::encrypt(Auth::user()->id));
+
+      $request->session()->put('status', Auth::user()->status);
+
+      $request->session()->put('email', Auth::user()->email);
+
+      $request->session()->put('name', Auth::user()->name);
+    };
+
+
     return redirect()->route('home');
   }
 

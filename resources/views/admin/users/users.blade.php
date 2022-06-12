@@ -65,6 +65,10 @@
                   @endforeach
                 </tbody>
               </table>
+              {{-- Pagination --}}
+              <div class="d-flex justify-content-center">
+                {!! $users->links() !!}
+              </div>
             </div>
           </div>
         </div>
@@ -130,8 +134,10 @@
       var _row = $(this).parent().parent().parent();
       _row.remove();
 
+      console.log(_id);
+
       $.ajax({
-        url: "admin-menu/" + _id,
+        url: "admin-user/" + _id,
         type: 'DELETE',
         dataType: 'json',
         data: {
@@ -148,16 +154,6 @@
       });
     });
   })(jQuery);
-
-  var status = "<?php if (isset($_GET['status'])) {
-                  echo $_GET['status'];
-                }; ?>"
-
-  if (status == "success") {
-    alert("Data berhasil ditambahkan");
-  } else if (status == "failed") {
-    alert("Data gagal ditambahkan");
-  }
 </script>
 
 </html>
