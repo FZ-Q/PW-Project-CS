@@ -30,7 +30,7 @@ class CategoriesController extends Controller
 
     CategoriesModel::create($data);
     $request->session()->flash('successMsg', 'Data berhasil disimpan!');
-    return redirect('kategori');
+    return redirect('admin-categories');
   }
 
   public function show($id)
@@ -60,7 +60,7 @@ class CategoriesController extends Controller
         'name' => $request->name,
       ]);
     }
-    return redirect('kategori');
+    return redirect('admin-categories');
   }
 
   public function destroy(Request $request, $id)

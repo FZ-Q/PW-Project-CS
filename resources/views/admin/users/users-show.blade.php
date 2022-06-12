@@ -38,7 +38,7 @@
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Status</label>
-                  <select class="form-select">
+                  <select class="form-select" name="status">
                     <option value="pegawai" @if ($user->status == 'pegawai') selected @endif>Pegawai</option>
                     <option value="pelanggan" @if ($user->status == 'pelanggan') selected @endif>pelanggan</option>
                     <option value="member" @if ($user->status == 'member') selected @endif>member</option>

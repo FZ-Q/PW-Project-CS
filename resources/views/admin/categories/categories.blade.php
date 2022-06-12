@@ -74,7 +74,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="formTambah" action="{{url('kategori')}}" method="post" enctype="multipart/form-data">
+          <form id="formTambah" action="{{url('admin-categories')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
               <label for="nameAdd" class="form-label">Nama</label>
@@ -107,7 +107,7 @@
       _row.remove();
 
       $.ajax({
-        url: "kategori/" + _id,
+        url: "admin-categories/" + _id,
         type: 'DELETE',
         dataType: 'json',
         data: {
