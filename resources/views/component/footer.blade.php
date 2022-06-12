@@ -11,9 +11,9 @@
       <div class="col-md-4">
         <h5>Section</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="index.php" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="menu.php?search=all&kategori=all" class="nav-link p-0 text-muted">Menu</a></li>
-          <li class="nav-item mb-2"><a href="cart.php" class="nav-link p-0 text-muted">Cart</a></li>
+          <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="{{url('menu/all')}}" class="nav-link p-0 text-muted">Menu</a></li>
+          <li class="nav-item mb-2"><a href="{{url('cart')}}" class="nav-link p-0 text-muted">Cart</a></li>
         </ul>
       </div>
       <div class="col-md-4">
