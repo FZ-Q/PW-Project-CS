@@ -26,7 +26,11 @@
           <div class="wrapper">
             <a class="nav-link" href="{{url('cart')}}">Cart</a>
             <span class="text-center">
+              @if(session('cart') != null)
+              {{count(session('cart'))}}
+              @else
               0
+              @endif
             </span>
           </div>
         </li>
