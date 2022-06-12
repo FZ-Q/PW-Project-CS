@@ -6,6 +6,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        @if (Session::get('status') == 'pegawai')
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url('admin-purchase')}}">Admin</a>
+        </li>
+        @endif
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
