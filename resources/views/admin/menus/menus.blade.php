@@ -128,26 +128,29 @@
 <script type="text/javascript">
   (function($) {
     $(document).on('click', 'a.deleteRow', function() {
-      var _id = $(this).attr('data-id');
-      var _row = $(this).parent().parent().parent();
-      _row.remove();
+      if(confirm('Are you sure you want to delete this item?')==true){
 
-      $.ajax({
-        url: "admin-menu/" + _id,
-        type: 'DELETE',
-        dataType: 'json',
-        data: {
-          id: _id,
-          _token: "{{csrf_token()}}"
-        },
-        success: function(__resp) {
-          console.log(_row);
-
-          if (__resp.success) {
-            _row.remove();
+        var _id = $(this).attr('data-id');
+        var _row = $(this).parent().parent().parent();
+        _row.remove();
+  
+        $.ajax({
+          url: "admin-menu/" + _id,
+          type: 'DELETE',
+          dataType: 'json',
+          data: {
+            id: _id,
+            _token: "{{csrf_token()}}"
+          },
+          success: function(__resp) {
+            console.log(_row);
+  
+            if (__resp.success) {
+              _row.remove();
+            }
           }
-        }
-      });
+        });
+      }
     });
   })(jQuery);
 
