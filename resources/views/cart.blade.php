@@ -91,7 +91,9 @@
                     </table>
                   </div>
                   <div class="col-md-2">
+                    @if (session::get('cart') != null)
                     <a href="{{route('checkout')}}" class="btn btn-primary">Checkout</a>
+                    @endif
                   </div>
                 </div>
               </div>

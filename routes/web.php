@@ -61,3 +61,5 @@ Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('menu/{filter}', [UMenuController::class, 'index'])->name('menu');
 Route::get('menu-detail/{id}', [UMenuController::class, 'detail']);
+Route::get('register', [LoginController::class, 'formRegister']);
+Route::post('register-action', [LoginController::class, 'register']);

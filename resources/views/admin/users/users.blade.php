@@ -58,7 +58,7 @@
                     <td>
                       <div class="btn-group" role="group" aria-label="Basic example">
                         <a href="{{url('admin-user/'.$u->id)}}" type="button" class="btn btn-primary">Edit</a>
-                        <a href="javascript:void(0);" type="button" class="btn btn-danger deleteRow" data-id="{{$u->id}}">Hapus</a>
+                        <a href="javascript:void(0);" type="button" class="btn btn-danger deleteRow" data-id="{{$u->id}}" onclick="return confirm('Are you sure you want to delete this user?');">Hapus</a>
                       </div>
                     </td>
                   </tr>

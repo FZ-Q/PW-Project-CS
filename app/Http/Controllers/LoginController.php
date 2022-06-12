@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Crypt;
+use App\Models\UserModel;
+use Illuminate\Support\Facades\Hash;
 
 
 class LoginController extends Controller
@@ -47,7 +49,30 @@ class LoginController extends Controller
         ->withErrors(["Email atau password salah!"]);
     }
   }
+  public function formRegister ()
+  {
+    $home = new HomeController();
 
+    $categories = $home->nav();
+
+    return view('register', compact('categories'));
+  }
+  public function register(request $request){
+    $data = new UserModel;
+    $data->name = $request->name;
+    $data->email = $request->email;
+    $data->password = Hash::make($request->password);
+
+    if ($request->hasFile('image')) {
+      $image = $request->file('image');
+      $imageName = time() . '.' . $image->getClientOriginalExtension();
+      $image->move(public_path('images'), $imageName);
+      $data->image = 'images/' . $imageName;
+    }
+
+    $data->save();
+    return redirect()->route('home');
+  }
 
   public function logout()
   {
