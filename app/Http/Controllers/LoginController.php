@@ -33,7 +33,11 @@ class LoginController extends Controller
 
       $request->session()->put('name', Auth::user()->name);
 
-      return redirect()->route('home');
+      if (Auth::user()->status == 'pegawai') {
+        return redirect('admin-menu');
+      } else {
+        return redirect()->route('home');
+      }
     } else {
       return redirect()
         ->back()

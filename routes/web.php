@@ -26,13 +26,16 @@ use App\Http\Controllers\CartController;
 // });
 
 // Admin routes
-// Route::apiResource('kategori', CategoriesController::class);
-//Route::apiResource('admin-kategori', CategoriesController::class);
-//Route::apiResource('kategori', [CategoriesController::class, 'index'])->name('categories');
-Route::apiResource('admin-menu', MenuController::class);
-Route::apiResource('admin-user', UsersController::class);
-Route::apiResource('admin-categories', CategoriesController::class);
-
+Route::group(
+  [
+    'middleware' => ['auth', 'admin'],
+  ],
+  function () {
+    Route::apiResource('admin-menu', MenuController::class);
+    Route::apiResource('admin-user', UsersController::class);
+    Route::apiResource('admin-categories', CategoriesController::class);
+  }
+);
 // User routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
